@@ -1,0 +1,75 @@
+
+
+RewriteEngine On
+
+RewriteBase /
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+ErrorDocument 404 /404.html
+
+# stranky (zakladne)
+RewriteRule ^modudrzby$ modudrzby.php [N,QSA]
+RewriteRule ^registracia$ registrovat.php [N,QSA]
+RewriteRule ^noveheslo$ zabudnuteheslo.php [N,QSA]
+RewriteRule ^vyhladavanie$ search.php [N,QSA]
+RewriteRule ^clanky$ clanky.php [N,QSA]
+RewriteRule ^serieclankov$ serie.php [N,QSA]
+RewriteRule ^subory$ subory.php [N,QSA]
+
+# stranky
+RewriteRule ^stranky/team$ stranky/team.php [N,QSA]
+RewriteRule ^stranky/podportenas$ stranky/podportenas.php [N,QSA]
+RewriteRule ^stranky/kontakt$ stranky/kontakt.php [N,QSA]
+RewriteRule ^stranky/o-nas$ stranky/onas.php [N,QSA]
+RewriteRule ^stranky/pravidla$ stranky/pravidla.php [N,QSA]
+
+# manager
+RewriteRule ^manager$ /adminmanager/ [N,QSA]
+RewriteRule ^manager/administratori$ adminmanager/administratori.php [N,QSA]
+RewriteRule ^manager/hlavne$ adminmanager/hlavne.php [N,QSA]
+RewriteRule ^manager/uzivatelia$ adminmanager/uzivatelia.php [N,QSA]
+RewriteRule ^manager/clanky$ adminmanager/clanky.php [N,QSA]
+RewriteRule ^manager/na-stiahnutie$ adminmanager/download.php [N,QSA]
+RewriteRule ^manager/kategorie$ adminmanager/kategorie.php [N,QSA]
+RewriteRule ^manager/uploader$ adminmanager/upload.php [N,QSA]
+RewriteRule ^manager/clanokuprava$ adminmanager/clanokuprava.php [N,QSA]
+RewriteRule ^manager/komentare$ adminmanager/komentare.php [N,QSA]
+RewriteRule ^manager/serieclankov$ adminmanager/serieclankov.php [N,QSA]
+RewriteRule ^manager/faq$ adminmanager/faq.php [N,QSA]
+
+# forum
+RewriteRule ^forum$ diskusie/fora.php [N,QSA]
+RewriteRule ^tema/(.*)/(.*)$ diskusie/tema.php?idt=$1&nt=$2 [N,QSA]
+RewriteRule ^forum/(.*)/(.*)$ diskusie/fora.php?fcat=$1&nf=$2 [N,QSA]
+RewriteRule ^forum/novatema-(.*)$ diskusie/novatema.php?forumfid=$1 [N,QSA]
+
+# uzivatel
+RewriteRule ^uzivatel/profil$ uzivatel/profil.php [N,QSA]
+RewriteRule ^profiluser/(.*)$ uzivatel/zobrazitprofil.php?uid=$1 [N,QSA]
+RewriteRule ^uzivatel/konverzacie$ uzivatel/konverzacie.php [N,QSA]
+RewriteRule ^uzivatel/pozadieprofilu$ uzivatel/pozadieprofilu.php [N,QSA]
+RewriteRule ^uzivatel/pridatclanok$ uzivatel/pridatclanok.php [N,QSA]
+RewriteRule ^prezentacie/novy$ uzivatel/prezentacieadd.php [N,QSA]
+
+# serie
+RewriteRule ^seria/(.*)/(.*)$ serie.php?seria=$1&n=$2 [N,QSA]
+
+# clanky
+RewriteRule ^clanky/kategoria/(.*)/(.*)$ clanky.php?cat=$1&n=$2 [N,QSA]
+RewriteRule ^clanok/(.*)/(.*)$ clanok.php?id=$1&n=$2 [N,QSA]
+
+# downloady
+RewriteRule ^subory/subor/(.*)/(.*)$ subory.php?suborid=$1&sn=$2 [N,QSA]
+RewriteRule ^subory/(.*)/(.*)$ subory.php?cat=$1&n=$2 [N,QSA]
+RewriteRule ^stiahnut/(.*)$ stiahnut.php?id=$1 [N,QSA]
+
+# prezentacie
+RewriteRule ^prezentacia/(.*)/(.*)$ prezentacia.php?pro=$1&n=$2 [N,QSA]
+
+# archiv
+RewriteRule ^archiv/(.*)/(.*)$ archiv.php?idm=$1&m=$2 [N,QSA]
+
+#bannery
+RewriteRule ^css/img/468x60.png$ css/img/desartbanner.png [N,QSA]
+RewriteRule ^css/img/88x31.png$ css/img/desarticon.png [N,QSA]
